@@ -1,13 +1,6 @@
-/*
- * DS18B20_driver.c
- *
- *  Created on: Oct 28, 2016
- *      Author: Kadiatou
- */
-
 #include "sensor.h"
 
-
+// Lecture du contenu de la mémoire du capteur
 void DS18B20_LireScratchpad(DS18B20_scratchpad_t* scratchpad)
 {
 	if(OneWire_Reset() == 1)
@@ -20,6 +13,7 @@ void DS18B20_LireScratchpad(DS18B20_scratchpad_t* scratchpad)
 			debug_printf("fail read_scratchpad\n\r");
 }
 
+// Lecture de la mémoire ROM du capteur de température DS18B20
 void DS18B20_LireROM()
 {
 	if(OneWire_Reset() == 1)
@@ -41,6 +35,7 @@ void DS18B20_LireROM()
 	debug_printf("\n\n\r");
 }
 
+// Lecture de la température avec en paramètre la température
 void DS18B20_LireTemperature(float *temperature )
 {
 	DS18B20_scratchpad_t scratchpad;

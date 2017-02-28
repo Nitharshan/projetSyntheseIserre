@@ -9,7 +9,7 @@
 #define SOURCES_CONSOLE_H_
 
 #include "DbgCs1.h"
-
+//valeur par défaut de echo_true à 1 pour signifier True
 int echo_true = 1;
 
 void afficher_chaine(char* chaine, int retourLigne);

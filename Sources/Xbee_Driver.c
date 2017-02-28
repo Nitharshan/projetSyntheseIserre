@@ -1,13 +1,7 @@
-/*
- * Xbee_Driver.c
- *
- *  Created on: Nov 3, 2016
- *      Author: cheik
- */
 #include "Xbee_Driver.h"
 
 
-
+// création du header de la frame tx
 xbee_tx_frame_header createTxHeader(uint64_t address)
 {
 	xbee_tx_frame_header header;
@@ -32,6 +26,7 @@ uint8_t* createSearchsSinkformat(uint8_t type)
 	return SearchFrame;
 }
 
+// création du header de la frame rx
 xbee_rx_frame_header createRxHeader(uint64_t address)
 {
 	xbee_rx_frame_header header;
@@ -43,6 +38,7 @@ xbee_rx_frame_header createRxHeader(uint64_t address)
 	return header;
 }
 
+// calcul de la valeur checksum de la frame tx en paramètre
 void calculate_tx_checksum(xbee_tx_frame *frame)
 {
 	// Checksum is FF minus 8-bit sum of bytes between length and checksum
@@ -60,6 +56,7 @@ void calculate_tx_checksum(xbee_tx_frame *frame)
 
 }
 
+// calcul de la valeur checksum de la frame rx
 void check_rx_checksum(xbee_rx_frame *frame)
 {
 	uint8_t sum = 0;
@@ -89,6 +86,9 @@ void address_to_byte_array(uint64_t address, uint8_t *byte_array)
 	}
 }
 
+/*
+ *génére la valeur raw de la frame tx en paramètre
+ */
 void tx_frame_generate_raw(xbee_tx_frame *frame)
 {
 	frame->raw[0] = frame->start_delimiter;
@@ -120,6 +120,9 @@ void tx_frame_generate_raw(xbee_tx_frame *frame)
 	frame->raw[17 + frame->payload_size] = 0xFF;
 }
 
+/*
+ * création de la frame tx avec les paramètres d'adresse, de données et de la taille des données
+ */
 xbee_tx_frame createTxFrame (uint64_t address, uint8_t *data, uint8_t data_length)
 {
 	xbee_tx_frame txFrame;
@@ -147,7 +150,9 @@ xbee_tx_frame createTxFrame (uint64_t address, uint8_t *data, uint8_t data_lengt
 
 }
 
-
+/*
+ * convertit de à partir de l'API des données convertit en données bruts dans les paramètres
+ */
 void convertFromApi2(uint8_t *raw_data, uint8_t *converted_data) {
 	int frameLength = 0;
 	int i = 0;
@@ -181,6 +186,9 @@ void convertFromApi2(uint8_t *raw_data, uint8_t *converted_data) {
 	}
 }
 
+/*
+ * convertit vers l'API des données brut en valeurs brut dans les paramètres
+ */
 int convertToApi2(uint8_t *raw_data, uint8_t *converted_data) {
 	int frameLength = raw_data[2];
 	int i = 2;
@@ -248,6 +256,9 @@ xbee_rx_frame createRxFrame(uint8_t raw_data[]) //, uint8_t datalength
 
 }
 
+/*
+ * envoie la trame avec les paramètres adress, données et taille des données
+ */
 void sendFrame(uint64_t address, uint8_t *data, uint8_t data_length)
 {
 	xbee_tx_frame frame = createTxFrame(address, data, data_length);

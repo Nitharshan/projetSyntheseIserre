@@ -1,14 +1,11 @@
-/*
- * StringUtility.c
- *
- *  Created on: 30 oct. 2016
- *      Author: Julien
- */
-
 #include "StringUtility.h"
 #include <stdbool.h>
 #include <math.h>
 
+/*
+ * Inverse la chaîne de caractères en paramètre * str
+ * dont la longuer length est aussi en paramètre
+ */
 void reverse(char* str, int length)
 {
     int start = 0;
@@ -23,7 +20,10 @@ void reverse(char* str, int length)
         end--;
     }
 }
-
+/*
+ * itoa dont les paramètres sont num, str et base
+ * convertit la température en nombre flottant à signe
+ */
 void itoa(int num, char* str, int base)
 {
     int i = 0;
@@ -85,6 +85,9 @@ static int ftoaUtility_itoa(int x, char str[], int d)
    return i;
 }
 
+/*
+ * convertit num en chaîne dépendant si possibilité d'afficher la partie flottante (décimale)
+ */
 void ftoa(float num, char *str, int afterpoint)
 {
     // Extract integer part

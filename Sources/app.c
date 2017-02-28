@@ -5,14 +5,12 @@
 #include "StringUtility.h"
 #include "console.h"
 
-float temp; // Derniere temperature mesuree
-uint64_t sink_address = 0xFFFF;
-iSN_FrameCommand last_command;
+float temp; // Dernière température mesurée
+uint64_t sink_address = 0xFFFF;	//Adresse du sink
+iSN_FrameCommand last_command;	//Dernière commande
 
 
-/**
- * Envoie une trame contenant le message de temperature au sink
- */
+// Envoie une trame contenant le message de température au sink
 void envoi_mesure() {
 
 	uint8_t buffer_temp[4] = {0};
@@ -35,9 +33,8 @@ void envoi_mesure() {
 
 }
 
-/*
- * Mettre le contenu du fifo dans le buffer passé en paramètre. (XB_API 2)
- */
+// Mettre le contenu du fifo passé en paramètre dans le buffer . (XB_API 2)
+
 void lire_contenu_fifo(struct Fifo *fifo, uint8_t *contenu_fifo) {
 	uint8_t byte = 0;
 	int length = 0;
@@ -71,8 +68,8 @@ void lire_contenu_fifo(struct Fifo *fifo, uint8_t *contenu_fifo) {
 }
 
 /**
- * Verifie le buffer de reception s'il y'a une trame iSN.
- * Si trame complète trouvée, retourne le iSN_FrameType correspondant.
+ * Verifie s'il y'a une trame iSN dans le buffer de réception .
+ * Si la trame complète est trouvée, retourne le iSN_FrameType correspondant.
  * Sinon, retourne -1.
  */
 int check_trame_recue() {
@@ -88,10 +85,10 @@ int check_trame_recue() {
 		data_length = FIFO_SIZE - (fifo_xbee.begin - fifo_xbee.end);
 	}
 
-	// Recuperer le contenu du fifo_buffer -> la trame brute
+	// Récuperer le contenu du fifo_buffer -> la trame brute
 	lire_contenu_fifo(&fifo_xbee, trame_brute);
 
-	// Trame Xbee recue
+	// Trame Xbee reçue
 	xbee_rx_frame trame_xb = createRxFrame(trame_brute);
 
 	if (trame_xb.checksum == 0xFF)
@@ -100,7 +97,7 @@ int check_trame_recue() {
 	// Mettre à jour l'adresse du sink
 	sink_address = trame_xb.rx_header.source_address;
 
-	// Decodage trame iSN selon le frame_type trouvé
+	// Décodage de la trame iSN selon le frame_type trouvé
 	switch(trame_xb.payload[0]) {
 		case  iSN_FrameType_Command:
 			if(trame_xb.payload_size == sizeof(iSN_FrameCommand)) {
@@ -115,7 +112,9 @@ int check_trame_recue() {
 	}
 }
 
-
+/*
+ * Sert à exécuter la commande reçue
+ */
 void app_run() {
 
 	init_fifo(&fifo_xbee);
@@ -128,14 +127,14 @@ void app_run() {
 					// Commande reçue, last_command est à jour.
 					switch(last_command.command) {
 						case 0:
-							// Desactiver relais
+							// Désactiver le relais
 							break;
 						case 1:
-							// Activer relais
+							// Activer le relais
 							break;
 						case 2:
 							envoi_mesure();
-							//last_command = 0;
+							//raz last_command = 0;
 							break;
 						default:
 							break;
@@ -146,6 +145,6 @@ void app_run() {
 
 
 			}
-			OSA_TimeDelay(3000); // Délai avant de relire le buffer de reception. Nécessaire pour pouvoir lire toute la trame.
+			OSA_TimeDelay(3000); // Délai avant de relire le buffer de réception. Nécessaire pour pouvoir lire toute la trame.
 		}
 }
