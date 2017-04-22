@@ -9,6 +9,8 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include Static_Code/System/subdir.mk
+-include Sources/utility/subdir.mk
+-include Sources/Sensor/subdir.mk
 -include Sources/1wire/subdir.mk
 -include Sources/subdir.mk
 -include SDK/platform/utilities/src/subdir.mk
@@ -20,11 +22,13 @@ RM := rm -rf
 -include SDK/platform/hal/src/sim/MKL26Z4/subdir.mk
 -include SDK/platform/hal/src/rtc/subdir.mk
 -include SDK/platform/hal/src/port/subdir.mk
+-include SDK/platform/hal/src/pit/subdir.mk
 -include SDK/platform/hal/src/osc/subdir.mk
 -include SDK/platform/hal/src/mcg/subdir.mk
 -include SDK/platform/hal/src/lpsci/subdir.mk
 -include SDK/platform/drivers/src/uart/subdir.mk
 -include SDK/platform/drivers/src/rtc/subdir.mk
+-include SDK/platform/drivers/src/pit/subdir.mk
 -include SDK/platform/devices/MKL26Z4/startup/gcc/subdir.mk
 -include SDK/platform/devices/MKL26Z4/startup/subdir.mk
 -include SDK/platform/devices/subdir.mk
@@ -63,29 +67,29 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 SECONDARY_SIZE += \
-Xbee\ Sandbox.siz \
+iSerreTemperatureSensor.siz \
 
 
 # All Target
-all: Xbee\ Sandbox.elf secondary-outputs
+all: iSerreTemperatureSensor.elf secondary-outputs
 
 # Tool invocations
-Xbee\ Sandbox.elf: $(OBJS) $(USER_OBJS)
+iSerreTemperatureSensor.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross ARM C++ Linker'
-	arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -T "C:/Users/cheik/workspace.kds/Temp/Project_Settings/Linker_Files/ProcessorExpert.ld" -Xlinker --gc-sections -L"C:/Users/cheik/workspace.kds/Temp/Project_Settings/Linker_Files" -Wl,-Map,"Xbee Sandbox.map" -u _printf_float -u _scanf_float -specs=nosys.specs -specs=nano.specs -Xlinker -z -Xlinker muldefs -o "Xbee Sandbox.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -T "C:/Users/iSerre/Desktop/ProjetSynthese/iSerreTemperatureSensor/Project_Settings/Linker_Files/ProcessorExpert.ld" -Xlinker --gc-sections -L"C:/Users/iSerre/Desktop/ProjetSynthese/iSerreTemperatureSensor/Project_Settings/Linker_Files" -Wl,-Map,"iSerreTemperatureSensor.map" -u _printf_float -specs=nosys.specs -specs=nano.specs -Xlinker -z -Xlinker muldefs -o "iSerreTemperatureSensor.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-Xbee\ Sandbox.siz: Xbee\ Sandbox.elf
+iSerreTemperatureSensor.siz: iSerreTemperatureSensor.elf
 	@echo 'Invoking: Cross ARM GNU Print Size'
-	arm-none-eabi-size --format=berkeley "Xbee Sandbox.elf"
+	arm-none-eabi-size --format=berkeley "iSerreTemperatureSensor.elf"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(SECONDARY_SIZE)$(C++_DEPS)$(OBJS)$(C_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(CXX_DEPS)$(C_UPPER_DEPS)$(S_UPPER_DEPS) "Xbee Sandbox.elf"
+	-$(RM) $(SECONDARY_SIZE)$(C++_DEPS)$(OBJS)$(C_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(CXX_DEPS)$(C_UPPER_DEPS)$(S_UPPER_DEPS) iSerreTemperatureSensor.elf
 	-@echo ' '
 
 secondary-outputs: $(SECONDARY_SIZE)

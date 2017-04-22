@@ -4,13 +4,13 @@
 /*##                                                                         */
 /*##     Filename  : ProcessorExpert.ld                                      */
 /*##                                                                         */
-/*##     Project   : Temp                                                    */
+/*##     Project   : iSerreTemperatureSensor                                 */
 /*##                                                                         */
 /*##     Processor : MKL26Z128VLH4                                           */
 /*##                                                                         */
 /*##     Compiler  : GNU C Compiler                                          */
 /*##                                                                         */
-/*##     Date/Time : 2016-12-16, 14:11, # CodeGen: 0                         */
+/*##     Date/Time : 2017-03-28, 17:37, # CodeGen: 8                         */
 /*##                                                                         */
 /*##     Abstract  :                                                         */
 /*##                                                                         */
@@ -26,8 +26,8 @@
 /* Entry Point */
 ENTRY(Reset_Handler)
 
-HEAP_SIZE  = DEFINED(__heap_size__)  ? __heap_size__  : 0x00;
-STACK_SIZE = DEFINED(__stack_size__) ? __stack_size__ : 0x0400;
+HEAP_SIZE  = DEFINED(__heap_size__)  ? __heap_size__  : 0x1600;
+STACK_SIZE = DEFINED(__stack_size__) ? __stack_size__ : 0x1600;
 /* Specify the memory areas */
 MEMORY {
   m_interrupts          (RX)  : ORIGIN = 0x00000000, LENGTH = 0x00000200

@@ -122,8 +122,8 @@ extern "C" {
 /* RTC oscillator setting */
 
 /* Low power mode enable */
-/* SMC_PMPROT: AVLP=1,ALLS=1,AVLLS=1 */
-#define SYSTEM_SMC_PMPROT_VALUE        0x2AU               /* SMC_PMPROT */
+/* SMC_PMPROT: AVLP=0,ALLS=0,AVLLS=0 */
+#define SYSTEM_SMC_PMPROT_VALUE        0x00U               /* SMC_PMPROT */
 
 /* Internal reference clock trim */
 /* #undef SLOW_TRIM_ADDRESS */                             /* Slow oscillator not trimmed. Commented out for MISRA compliance. */

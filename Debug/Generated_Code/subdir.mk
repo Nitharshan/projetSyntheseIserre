@@ -7,6 +7,8 @@ C_SRCS += \
 ../Generated_Code/Cpu.c \
 ../Generated_Code/DbgCs1.c \
 ../Generated_Code/KSDK1.c \
+../Generated_Code/MCUC1.c \
+../Generated_Code/PIT_Timer0.c \
 ../Generated_Code/WAIT1.c \
 ../Generated_Code/clockMan1.c \
 ../Generated_Code/hardware_init.c \
@@ -19,6 +21,8 @@ OBJS += \
 ./Generated_Code/Cpu.o \
 ./Generated_Code/DbgCs1.o \
 ./Generated_Code/KSDK1.o \
+./Generated_Code/MCUC1.o \
+./Generated_Code/PIT_Timer0.o \
 ./Generated_Code/WAIT1.o \
 ./Generated_Code/clockMan1.o \
 ./Generated_Code/hardware_init.o \
@@ -31,6 +35,8 @@ C_DEPS += \
 ./Generated_Code/Cpu.d \
 ./Generated_Code/DbgCs1.d \
 ./Generated_Code/KSDK1.d \
+./Generated_Code/MCUC1.d \
+./Generated_Code/PIT_Timer0.d \
 ./Generated_Code/WAIT1.d \
 ./Generated_Code/clockMan1.d \
 ./Generated_Code/hardware_init.d \
@@ -44,7 +50,7 @@ C_DEPS += \
 Generated_Code/%.o: ../Generated_Code/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross ARM C Compiler'
-	arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"FSL_OSA_BM_TIMER_CONFIG=2" -D"CPU_MKL26Z128VLH4" -I"C:/Users/cheik/workspace.kds/Temp/SDK/platform/hal/inc" -I"C:/Users/cheik/workspace.kds/Temp/SDK/platform/hal/src/sim/MKL26Z4" -I"C:/Users/cheik/workspace.kds/Temp/SDK/platform/system/src/clock/MKL26Z4" -I"C:/Users/cheik/workspace.kds/Temp/SDK/platform/system/inc" -I"C:/Users/cheik/workspace.kds/Temp/SDK/platform/osa/inc" -I"C:/Users/cheik/workspace.kds/Temp/SDK/platform/CMSIS/Include" -I"C:/Users/cheik/workspace.kds/Temp/SDK/platform/devices" -I"C:/Users/cheik/workspace.kds/Temp/SDK/platform/devices/MKL26Z4/include" -I"C:/Users/cheik/workspace.kds/Temp/SDK/platform/utilities/src" -I"C:/Users/cheik/workspace.kds/Temp/SDK/platform/utilities/inc" -I"C:/Users/cheik/workspace.kds/Temp/SDK/platform/devices/MKL26Z4/startup" -I"C:/Users/cheik/workspace.kds/Temp/Generated_Code/SDK/platform/devices/MKL26Z4/startup" -I"C:/Users/cheik/workspace.kds/Temp/Sources" -I"C:/Users/cheik/workspace.kds/Temp/Generated_Code" -I"C:/Users/cheik/workspace.kds/Temp/SDK/platform/drivers/inc" -std=c99 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"FSL_OSA_BM_TIMER_CONFIG=2" -D"CPU_MKL26Z128VLH4" -I"C:/Users/iSerre/Desktop/ProjetSynthese/iSerreTemperatureSensor/SDK/platform/hal/inc" -I"C:/Users/iSerre/Desktop/ProjetSynthese/iSerreTemperatureSensor/SDK/platform/hal/src/sim/MKL26Z4" -I"C:/Users/iSerre/Desktop/ProjetSynthese/iSerreTemperatureSensor/SDK/platform/system/src/clock/MKL26Z4" -I"C:/Users/iSerre/Desktop/ProjetSynthese/iSerreTemperatureSensor/SDK/platform/system/inc" -I"C:/Users/iSerre/Desktop/ProjetSynthese/iSerreTemperatureSensor/SDK/platform/osa/inc" -I"C:/Users/iSerre/Desktop/ProjetSynthese/iSerreTemperatureSensor/SDK/platform/CMSIS/Include" -I"C:/Users/iSerre/Desktop/ProjetSynthese/iSerreTemperatureSensor/SDK/platform/devices" -I"C:/Users/iSerre/Desktop/ProjetSynthese/iSerreTemperatureSensor/SDK/platform/devices/MKL26Z4/include" -I"C:/Users/iSerre/Desktop/ProjetSynthese/iSerreTemperatureSensor/SDK/platform/utilities/src" -I"C:/Users/iSerre/Desktop/ProjetSynthese/iSerreTemperatureSensor/SDK/platform/utilities/inc" -I"C:/Users/iSerre/Desktop/ProjetSynthese/iSerreTemperatureSensor/SDK/platform/devices/MKL26Z4/startup" -I"C:/Users/iSerre/Desktop/ProjetSynthese/iSerreTemperatureSensor/Generated_Code/SDK/platform/devices/MKL26Z4/startup" -I"C:/Users/iSerre/Desktop/ProjetSynthese/iSerreTemperatureSensor/Sources" -I"C:/Users/iSerre/Desktop/ProjetSynthese/iSerreTemperatureSensor/Generated_Code" -I"C:/Users/iSerre/Desktop/ProjetSynthese/iSerreTemperatureSensor/SDK/platform/drivers/inc" -std=c99 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

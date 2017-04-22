@@ -18,7 +18,7 @@
 ///
 ///		The above copyright notice and this permission notice shall be included in
 ///		all copies or substantial portions of the Software.
-///	
+///
 ///		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 ///		IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 ///		FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -29,32 +29,32 @@
 ////////////////////////////////////////////////////////////////////////////////
 #ifndef __COMMON_H__
 #define __COMMON_H__
-	#include <stdint.h>
-	
-	/////////////////////////////////////////////////////////////////////////
-	///	\brief	Defines the true state
-	/////////////////////////////////////////////////////////////////////////
-	#define TRUE 	1
-	/////////////////////////////////////////////////////////////////////////
-	///	\brief	Defines the false state
-	/////////////////////////////////////////////////////////////////////////
-	#define FALSE 	0
+#include <stdint.h>
 
-	
-	/////////////////////////////////////////////////////////////////////////
-	///	\brief	union type converter.
-	///	handy for when you want to extract the byte from a data type.
-	/////////////////////////////////////////////////////////////////////////
-	typedef union{
-		float 		_float[2];
-		int64_t 	_int64;
-		int32_t 	_int32[2];
-		int16_t 	_int16[4];
-		int8_t 		_int8[8];
-		uint64_t 	_uint64;
-		uint32_t 	_uint32[2];
-		uint16_t 	_uint16[4];
-		uint8_t 	_uint8[8];
-	} TypeCon;
-	
+/////////////////////////////////////////////////////////////////////////
+///	\brief	Defines the true state
+/////////////////////////////////////////////////////////////////////////
+#define TRUE 	1
+/////////////////////////////////////////////////////////////////////////
+///	\brief	Defines the false state
+/////////////////////////////////////////////////////////////////////////
+#define FALSE 	0
+
+
+/////////////////////////////////////////////////////////////////////////
+///	\brief	union type converter.
+///	handy for when you want to extract the byte from a data type.
+/////////////////////////////////////////////////////////////////////////
+typedef union{
+    float 		_float[2];
+    int64_t 	_int64;
+    int32_t 	_int32[2];
+    int16_t 	_int16[4];
+    int8_t 		_int8[8];
+    uint64_t 	_uint64;
+    uint32_t 	_uint32[2];
+    uint16_t 	_uint16[4];
+    uint8_t 	_uint8[8];
+} TypeCon;
+
 #endif

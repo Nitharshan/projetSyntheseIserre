@@ -27,7 +27,9 @@ S_UPPER_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 Static_Code/System \
+Sources/utility \
 Sources \
+Sources/Sensor \
 Sources/1wire \
 SDK/platform/utilities/src \
 SDK/platform/system/src/interrupt \
@@ -38,11 +40,13 @@ SDK/platform/hal/src/uart \
 SDK/platform/hal/src/sim/MKL26Z4 \
 SDK/platform/hal/src/rtc \
 SDK/platform/hal/src/port \
+SDK/platform/hal/src/pit \
 SDK/platform/hal/src/osc \
 SDK/platform/hal/src/mcg \
 SDK/platform/hal/src/lpsci \
 SDK/platform/drivers/src/uart \
 SDK/platform/drivers/src/rtc \
+SDK/platform/drivers/src/pit \
 SDK/platform/devices \
 SDK/platform/devices/MKL26Z4/startup \
 SDK/platform/devices/MKL26Z4/startup/gcc \

@@ -2,7 +2,7 @@
 /// \file	onewire.h
 ///	\brief portable one wire layer that use MCU serial peripheral to implement
 ///			the signal layer.
-///	
+///
 ///	Author: Ronald Alexander Nobrega De Sousa (Opticalworm)
 ///	Website: www.HashDefineElectronics.com
 ///
@@ -19,7 +19,7 @@
 ///
 ///		The above copyright notice and this permission notice shall be included in
 ///		all copies or substantial portions of the Software.
-///	
+///
 ///		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 ///		IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 ///		FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -30,12 +30,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 #ifndef __ONE_WIRE_LAYER_MCU_H__
 #define __ONE_WIRE_LAYER_MCU_H__
-	#include <stdint.h>
-	
-	void OneWire_Init(void);
-	uint8_t OneWire_Reset(void);
-	int_fast8_t OneWire_Write(const uint8_t inputData);
-	int_fast8_t OneWire_Read(uint8_t *data);
-	uint8_t OneWire_CalculateCRC(uint8_t * source, uint8_t length);
+#include <stdint.h>
+
+void OneWire_Init(void);
+uint8_t OneWire_Reset(void);
+int_fast8_t OneWire_Write(const uint8_t inputData);
+int_fast8_t OneWire_Read(uint8_t *data);
+uint8_t OneWire_CalculateCRC(uint8_t * source, uint8_t length);
 
 #endif

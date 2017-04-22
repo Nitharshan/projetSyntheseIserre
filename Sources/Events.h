@@ -20,11 +20,11 @@
 ** @brief
 **         This is user's event module.
 **         Put your event handler code here.
-*/         
+*/
 /*!
 **  @addtogroup Events_module Events module documentation
 **  @{
-*/         
+*/
 
 #ifndef __Events_H
 #define __Events_H
@@ -35,36 +35,61 @@
 #include "pin_init.h"
 #include "osa1.h"
 #include "uart_xb.h"
+#include "PIT_Timer0.h"
 #include "DbgCs1.h"
 #include "uartCom1.h"
 #include "WAIT1.h"
+#include "MCUC1.h"
 #include "KSDK1.h"
 
 #ifdef __cplusplus
 extern "C" {
-#endif 
+    #endif
 
 
-/*
-** ===================================================================
-**     Callback    : uart_xb_RxCallback
-**     Description : This callback occurs when data are received.
-**     Parameters  :
-**       instance - The UART instance number.
-**       uartState - A pointer to the UART driver state structure
-**       memory.
-**     Returns : Nothing
-** ===================================================================
-*/
-void uart_xb_RxCallback(uint32_t instance, void * uartState);
+    /*
+    ** ===================================================================
+    **     Callback    : uartCom1_TxCallback
+    **     Description : This callback occurs when data are transmitted.
+    **     Parameters  :
+    **       instance - The UART instance number.
+    **       uartState - A pointer to the UART driver state structure
+    **       memory.
+    **     Returns : Nothing
+    ** ===================================================================
+    */
+    void uartCom1_TxCallback(uint32_t instance, void * uartState);
 
-/* END Events */
+    #ifdef PIT_Timer0_IDX
+    /*
+    ** ===================================================================
+    **     Interrupt handler : PIT_IRQHandler
+    **
+    **     Description :
+    **         User interrupt service routine.
+    **     Parameters  : None
+    **     Returns     : Nothing
+    ** ===================================================================
+    */
+    void PIT_IRQHandler(void);
+    #else
+        /* This IRQ handler is not used by PIT_Timer0 component. The purpose may be
+    * that the component has been removed or disabled. It is recommended to
+    * remove this handler because Processor Expert cannot modify it according to
+    * possible new request (e.g. in case that another component uses this
+    * interrupt vector). */
+    #warning This IRQ handler is not used by PIT_Timer0 component.\
+    It is recommended to remove this because Processor Expert cannot\
+    modify it according to possible new request.
+    #endif
 
-#ifdef __cplusplus
+    /* END Events */
+
+    #ifdef __cplusplus
 }  /* extern "C" */
-#endif 
+#endif
 
-#endif 
+#endif
 /* ifndef __Events_H*/
 /*!
 ** @}

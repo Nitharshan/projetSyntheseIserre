@@ -1,9 +1,9 @@
 /*
- * DS18B20driver.h
- *
- *  Created on: Oct 28, 2016
- *      Author: Kadiatou
- */
+* DS18B20driver.h
+*
+*  Created on: Oct 28, 2016
+*      Author: Kadiatou
+*/
 
 #ifndef SOURCES_SENSOR_H_
 #define SOURCES_SENSOR_H_
@@ -27,13 +27,13 @@
 
 typedef struct DS18B20_scratchpad_s
 {
-	uint8_t data[DS18B20_SCRATCHPAD_SIZE];
+    uint8_t data[DS18B20_SCRATCHPAD_SIZE];
 
-} DS18B20_scratchpad_t;
+} scratchpad_t;
 
-void DS18B20_LireTemperature(float *temperature );
-void DS18B20_LireScratchpad(DS18B20_scratchpad_t* scratchpad);
-void DS18B20_LireROM();
+void readTemperature(float *temperature );
+void readScratchpad(scratchpad_t* scratchpad);
+void readROM();
 
 
 
